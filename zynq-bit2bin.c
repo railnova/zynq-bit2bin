@@ -1,3 +1,14 @@
+/*
+ * SPDX-License-Identifier: MIT
+ *
+ * Copyright (C) 2019-2021 Titouan Christophe
+ *
+ * zynq-bit2bin: convert Xilinx Zynq7000 FPGA bitstreams from the .bit file
+ *               format to the .bin file format.
+ *
+ * This program is distributed under the MIT License
+ */
+
 #include <stdio.h>
 #include <string.h>
 #include <stdint.h>
