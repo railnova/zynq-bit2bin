@@ -13,6 +13,7 @@
 #include <string.h>
 #include <stdint.h>
 #include <stdbool.h>
+#include <endian.h>
 
 #define MIN(x, y) (x < y) ? x : y
 
@@ -146,15 +147,10 @@ static int invert_u32_endianness(uint8_t *buf, size_t n)
                 (int) n);
         return -1;
     }
-    uint8_t tmp;
-    for (size_t i=0; i<n; i+=4){
-        tmp = buf[i];
-        buf[i] = buf[i+3];
-        buf[i+3] = tmp;
 
-        tmp = buf[i+1];
-        buf[i+1] = buf[i+2];
-        buf[i+2] = tmp;
+    uint32_t *buf32 = (uint32_t *) buf;
+    for (size_t i=0; i<n/4; i++){
+        buf32[i] = htobe32(le32toh(buf32[i]));
     }
     return 0;
 }
