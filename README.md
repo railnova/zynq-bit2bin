@@ -19,7 +19,7 @@ from Linux on the
 ### pre-compiled version
 
 A compiled version for Linux on amd64 is available on the
-[latest release](https://github.com/titouanc/zynq-bit2bin/releases/latest)
+[latest release](https://github.com/railnova/zynq-bit2bin/releases/latest)
 on this repository.
 
 ### Build it yourself
