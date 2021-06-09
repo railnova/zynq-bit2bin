@@ -30,6 +30,8 @@ To build the program for your machine, simply run:
 make
 ```
 
+### Using zynq-bit2bin
+
 The program reads from the standard input, and writes to the standard output.
 For example, running it in the shell:
 
