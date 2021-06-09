@@ -1,0 +1,33 @@
+name: Build && release
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  release:
+    types: [published]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Get associated Github release
+        if: github.event_name == 'release'
+        id: get_release
+        uses: bruceadams/get-release@v1.2.2
+
+      - name: Build
+        run: make
+
+      - name: Publish release asset
+        if: github.event_name == 'release'
+        uses: actions/upload-release-asset@v1.0.2
+        with:
+          upload_url: ${{ steps.get_release.outputs.upload_url }}
+          asset_path: zynq-bit2bin
+          asset_name: zynq-bit2bin-linux-amd64
+          asset_content_type: application/octet-stream
